@@ -2,6 +2,7 @@
 	The entry point for the Fusion library.
 ]]
 
+local New = require(script.Instances.New)
 local Types = require(script.Types)
 local restrictRead = require(script.Utility.restrictRead)
 
@@ -10,7 +11,7 @@ export type StateOrValue = Types.StateOrValue
 export type Symbol = Types.Symbol
 
 return restrictRead("Fusion", {
-	New = require(script.Instances.New),
+	New = New,
 	Children = require(script.Instances.Children),
 	OnEvent = require(script.Instances.OnEvent),
 	OnChange = require(script.Instances.OnChange),
@@ -21,5 +22,12 @@ return restrictRead("Fusion", {
 	Compat = require(script.State.Compat),
 
 	Tween = require(script.Animation.Tween),
-	Spring = require(script.Animation.Spring)
+	Spring = require(script.Animation.Spring),
+
+	createElement = function(name, props)
+		return New(name)(props)
+	end,
+	createFragment = function(items)
+		return items
+	end,
 })

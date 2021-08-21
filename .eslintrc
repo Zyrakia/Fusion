@@ -36,6 +36,7 @@
 		"@typescript-eslint/no-namespace": "off",
 		"@typescript-eslint/no-explicit-any": "off",
 		"@typescript-eslint/no-non-null-assertion": "off",
+		"@typescript-eslint/triple-slash-reference": "off",
 		"class-methods-use-this": "warn",
 		"prefer-const": "warn",
 		"no-constant-condition": "off",

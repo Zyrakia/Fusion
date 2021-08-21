@@ -5,6 +5,7 @@
 		"isolatedModules": true,
 		"downlevelIteration": true,
 		"module": "commonjs",
+		"moduleResolution": "Node",
 		"noLib": true,
 		"strict": true,
 		"target": "es6",
@@ -13,9 +14,11 @@
 		// required, configurable
 		"rootDir": "src",
 		"baseUrl": "src",
+		"outDir": "out",
 
 		// optional, non-configurable
 		"jsx": "react",
-		"jsxFactory": "Roact.createElement"
+		"jsxFactory": "Fusion.createElement",
+		"jsxFragmentFactory": "Fusion.createFragment"
 	}
 }
