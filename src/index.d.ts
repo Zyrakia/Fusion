@@ -26,9 +26,11 @@ declare namespace Fusion {
 
 // JSX Shims
 declare namespace Fusion {
-	export function createFragment(elements?: { [elementName: string]: Instance }): Array<Instance>;
-	export function createFragment(elements?: ReadonlyMap<string | number, Instance>): Array<Instance>;
-	export function createFragment(elements?: ReadonlyArray<Instance>): Array<Instance>;
+	type Element = Instance;
+	type Fragment = Array<Instance>;
+	export function createFragment(elements?: { [elementName: string]: Instance }): Fragment;
+	export function createFragment(elements?: ReadonlyMap<string | number, Instance>): Fragment;
+	export function createFragment(elements?: ReadonlyArray<Instance>): Fragment;
 	export function createElement<T extends keyof CreatableInstances>(
 		component: T,
 		props: NewProperties<Instances[T]>,

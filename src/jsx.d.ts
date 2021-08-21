@@ -1,32 +1,41 @@
 import Fusion from "./index";
 
+type JsxChild = boolean | Instance | ReadonlyArray<Instance> | ReadonlyMap<string | number, Instance> | undefined;
+
+type JsxNode = JsxChild | Array<JsxChild>;
+
 declare global {
 	namespace JSX {
+		interface IntrinsicAttributes {
+			Key?: string | number;
+			_jsx_children?: JsxNode;
+		}
+		type IntrinsicElement<T extends Instance> = IntrinsicAttributes & Partial<InstanceProperties<T>>;
 		interface IntrinsicElements {
-			billboardgui: BillboardGui;
-			camera: Camera;
-			frame: Frame;
-			imagebutton: ImageButton;
-			imagelabel: ImageLabel;
-			screengui: ScreenGui;
-			scrollingframe: ScrollingFrame;
-			surfacegui: SurfaceGui;
-			textbox: TextBox;
-			textbutton: TextButton;
-			textlabel: TextLabel;
-			uiaspectratioconstraint: UIAspectRatioConstraint;
-			uicorner: UICorner;
-			uigradient: UIGradient;
-			uigridlayout: UIGridLayout;
-			uilistlayout: UIListLayout;
-			uipadding: UIPadding;
-			uipagelayout: UIPageLayout;
-			uiscale: UIScale;
-			uisizeconstraint: UISizeConstraint;
-			uistroke: UIStroke;
-			uitablelayout: UITableLayout;
-			uitextsizeconstraint: UITextSizeConstraint;
-			viewportframe: ViewportFrame;
+			billboardgui: IntrinsicElement<BillboardGui>;
+			camera: IntrinsicElement<Camera>;
+			frame: IntrinsicElement<Frame>;
+			imagebutton: IntrinsicElement<ImageButton>;
+			imagelabel: IntrinsicElement<ImageLabel>;
+			screengui: IntrinsicElement<ScreenGui>;
+			scrollingframe: IntrinsicElement<ScrollingFrame>;
+			surfacegui: IntrinsicElement<SurfaceGui>;
+			textbox: IntrinsicElement<TextBox>;
+			textbutton: IntrinsicElement<TextButton>;
+			textlabel: IntrinsicElement<TextLabel>;
+			uiaspectratioconstraint: IntrinsicElement<UIAspectRatioConstraint>;
+			uicorner: IntrinsicElement<UICorner>;
+			uigradient: IntrinsicElement<UIGradient>;
+			uigridlayout: IntrinsicElement<UIGridLayout>;
+			uilistlayout: IntrinsicElement<UIListLayout>;
+			uipadding: IntrinsicElement<UIPadding>;
+			uipagelayout: IntrinsicElement<UIPageLayout>;
+			uiscale: IntrinsicElement<UIScale>;
+			uisizeconstraint: IntrinsicElement<UISizeConstraint>;
+			uistroke: IntrinsicElement<UIStroke>;
+			uitablelayout: IntrinsicElement<UITableLayout>;
+			uitextsizeconstraint: IntrinsicElement<UITextSizeConstraint>;
+			viewportframe: IntrinsicElement<ViewportFrame>;
 		}
 	}
 }
