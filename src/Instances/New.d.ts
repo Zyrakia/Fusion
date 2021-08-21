@@ -3,7 +3,7 @@ import { OnChangeSymbol } from "Instances/OnChange";
 import { OnEventSymbol } from "Instances/OnEvent";
 import { State, StateOrValue } from "Types";
 
-export type ChildrenValue = StateOrValue<Instance> | Array<ChildrenValue>;
+export type ChildrenValue = StateOrValue<Instance | undefined> | Array<ChildrenValue>;
 export type NewProperties<T extends Instance> = Partial<
 	| {
 			[K in keyof WritableInstanceProperties<T>]:
