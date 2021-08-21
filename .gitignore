@@ -9,3 +9,6 @@
 
 # Ignore site folder
 /site/
+
+# Ignore npm dependencies
+node_modules
