@@ -1,4 +1,4 @@
-import { State } from "Types";
+import { State } from "../Types";
 
 export declare interface Compat<T> {
 	type: "State";

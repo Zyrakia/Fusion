@@ -1,4 +1,4 @@
-import { Animatable, State } from "Types";
+import { Animatable, State } from "../Types";
 
 export declare interface Spring<T> {
 	type: "State";

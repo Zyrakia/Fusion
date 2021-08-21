@@ -1,4 +1,4 @@
-import { StateOrValue } from "Types";
+import { StateOrValue } from "../Types";
 
 export declare interface ComputedPairs<T> {
 	type: "State";
