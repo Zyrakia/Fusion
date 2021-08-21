@@ -1,7 +1,7 @@
 import { Spring } from "Animation/Spring";
 import { Tween } from "Animation/Tween";
 import { Children } from "Instances/Children";
-import { New } from "Instances/New";
+import { ChildrenValue, New } from "Instances/New";
 import { OnChange } from "Instances/OnChange";
 import { OnEvent } from "Instances/OnEvent";
 import { Compat } from "State/Compat";
@@ -18,7 +18,7 @@ declare namespace Fusion {
 	// Animation
 	export { Spring, Tween };
 	// Util types
-	export { Animatable, Error };
+	export { Animatable, ChildrenValue, Error };
 }
 
 export = Fusion;
