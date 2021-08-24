@@ -11,7 +11,7 @@ export type NewProperties<T extends Instance> = Partial<
 				| State<WritableInstanceProperties<T>[K]>;
 	  }
 	| {
-			[K in InstanceEventNames<T> as OnChangeSymbol<K>]: (newValue: T[K]) => void;
+			[K in InstancePropertyNames<T> as OnChangeSymbol<K>]: (newValue: T[K]) => void;
 	  }
 	| {
 			[K in InstanceEventNames<T> as OnEventSymbol<K>]: T[K] extends RBXScriptSignal<infer C>
