@@ -31,11 +31,23 @@ declare namespace Fusion {
 	export function createFragment(elements?: { [elementName: string]: Instance }): Fragment;
 	export function createFragment(elements?: ReadonlyMap<string | number, Instance>): Fragment;
 	export function createFragment(elements?: ReadonlyArray<Instance>): Fragment;
-	export function createElement<T extends keyof CreatableInstances>(
+	export function createElement<T extends keyof CreatableInstances, I extends CreatableInstances[T]>(
 		component: T,
-		props: NewProperties<Instances[T]>,
-		children: ChildrenValue,
-	): Instances[T];
+		props?: {
+			[K in keyof WritableInstanceProperties<I>]?:
+				| WritableInstanceProperties<I>[K]
+				| State<WritableInstanceProperties<I>[K]>;
+		},
+		onChanged?: {
+			[K in InstancePropertyNames<I>]?: (newValue: I[K]) => void;
+		},
+		onEvent?: {
+			[K in InstanceEventNames<I>]?: I[K] extends RBXScriptSignal<infer C>
+				? (...args: Parameters<C>) => void
+				: never;
+		},
+		children?: ChildrenValue,
+	): I;
 }
 
 export = Fusion;

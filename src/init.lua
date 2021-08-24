@@ -4,6 +4,8 @@
 
 local Children = require(script.Instances.Children)
 local New = require(script.Instances.New)
+local OnChange = require(script.Instances.OnChange)
+local OnEvent = require(script.Instances.OnEvent)
 local Types = require(script.Types)
 local restrictRead = require(script.Utility.restrictRead)
 
@@ -12,31 +14,41 @@ export type StateOrValue = Types.StateOrValue
 export type Symbol = Types.Symbol
 
 return restrictRead("Fusion", {
-	New = New,
 	Children = Children,
-	OnEvent = require(script.Instances.OnEvent),
-	OnChange = require(script.Instances.OnChange),
+	OnChange = OnChange,
+	OnEvent = OnEvent,
+	New = New,
 
-	State = require(script.State.State),
+	Compat = require(script.State.Compat),
 	Computed = require(script.State.Computed),
 	ComputedPairs = require(script.State.ComputedPairs),
-	Compat = require(script.State.Compat),
+	State = require(script.State.State),
 
-	Tween = require(script.Animation.Tween),
 	Spring = require(script.Animation.Spring),
+	Tween = require(script.Animation.Tween),
 
-	createElement = function(name, instanceProps, children)
-		local properties = {
+	createElement = function(name, props, onChanged, onEvent, children)
+		local endProps = {
 			[Children] = children,
 		}
-		if instanceProps then
-			for i, v in pairs(instanceProps) do
-				properties[i] = v
+		if props then
+			for i, v in pairs(props) do
+				endProps[i] = v
 			end
 		end
-		return New(name)(properties)
+		if onChanged then
+			for i, v in pairs(onChanged) do
+				endProps[OnChange(i)] = v
+			end
+		end
+		if onEvent then
+			for i, v in pairs(onEvent) do
+				endProps[OnEvent(i)] = v
+			end
+		end
+		return New(name)(endProps)
 	end,
 	createFragment = function(items)
-		return items
+		return items or {}
 	end,
 })
