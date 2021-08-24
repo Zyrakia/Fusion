@@ -3,7 +3,7 @@
 import { Spring } from "./Animation/Spring";
 import { Tween } from "./Animation/Tween";
 import { Children } from "./Instances/Children";
-import { ChildrenValue, New, NewProperties } from "./Instances/New";
+import { ChildrenValue, New } from "./Instances/New";
 import { OnChange } from "./Instances/OnChange";
 import { OnEvent } from "./Instances/OnEvent";
 import { Compat } from "./State/Compat";
@@ -21,7 +21,7 @@ declare namespace Fusion {
 	// Animation
 	export { Spring, Tween };
 	// Util types
-	export { Animatable, ChildrenValue, Error, NewProperties };
+	export { Animatable, ChildrenValue, Error };
 }
 
 // JSX Shims
