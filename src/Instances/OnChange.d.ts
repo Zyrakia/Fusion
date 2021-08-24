@@ -3,4 +3,4 @@ export declare type OnChangeSymbol<T> = symbol & {
 	name: "OnChange";
 	key: T;
 };
-export declare function OnChange<T extends keyof InstanceProperties<Instance>>(name: T): OnChangeSymbol<T>;
+export declare function OnChange<K extends string>(name: K): OnChangeSymbol<K>;

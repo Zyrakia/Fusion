@@ -3,4 +3,4 @@ export declare type OnEventSymbol<T> = symbol & {
 	name: "OnEvent";
 	key: T;
 };
-export declare function OnEvent<T extends keyof InstanceEvents<Instance>>(name: T): OnEventSymbol<T>;
+export declare function OnEvent<K extends string>(name: K): OnEventSymbol<K>;
