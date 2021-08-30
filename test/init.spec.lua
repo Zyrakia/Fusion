@@ -17,7 +17,10 @@ return function()
 			Compat = "function",
 
 			Tween = "function",
-			Spring = "function"
+			Spring = "function",
+
+			createElement = "function",
+			createFragment = "function"
 		}
 
 		for apiName, apiType in pairs(api) do
