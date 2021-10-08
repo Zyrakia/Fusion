@@ -1,6 +1,3 @@
-export declare type OnChangeSymbol<T> = symbol & {
-	type: "Symbol";
-	name: "OnChange";
-	key: T;
-};
-export declare function OnChange<K extends string>(name: K): OnChangeSymbol<K>;
+import { MergeStrings } from "../utilTypes";
+
+export declare function OnChange<K extends string>(name: K): MergeStrings<"OnChangeSymbol", K>;

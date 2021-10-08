@@ -1,7 +1,6 @@
 import { ChildrenSymbol } from "../Instances/Children";
-import { OnChangeSymbol } from "../Instances/OnChange";
-import { OnEventSymbol } from "../Instances/OnEvent";
 import { State, StateOrValue } from "../Types";
+import { MergeStrings } from "../utilTypes";
 
 export type ChildrenValue = StateOrValue<Instance | undefined> | Array<ChildrenValue>;
 export type NewProperties<T extends Instance> = Partial<
@@ -11,10 +10,10 @@ export type NewProperties<T extends Instance> = Partial<
 				| State<WritableInstanceProperties<T>[K]>;
 	  }
 	| {
-			[K in InstancePropertyNames<T> as OnChangeSymbol<K>]: (newValue: T[K]) => void;
+			[K in InstancePropertyNames<T> as MergeStrings<"OnChangeSymbol", K>]: (newValue: T[K]) => void;
 	  }
 	| {
-			[K in InstanceEventNames<T> as OnEventSymbol<K>]: T[K] extends RBXScriptSignal<infer C>
+			[K in InstanceEventNames<T> as MergeStrings<"OnEventSymbol", K>]: T[K] extends RBXScriptSignal<infer C>
 				? (...args: Parameters<C>) => void
 				: never;
 	  }

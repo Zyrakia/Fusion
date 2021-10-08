@@ -6,6 +6,7 @@
 	"typings": "src/index.d.ts",
 	"scripts": {
 		"eslint": "eslint \"src/**/*.ts\" --max-warnings 0",
+		"eslint-fix": "eslint \"src/**/*.ts\" --fix",
 		"test": "npm run test-build && npm run test-run",
 		"test-build": "rojo build test-runner.project.json -o test.rbxl",
 		"test-run": "run-in-roblox --place test.rbxl --script test-runner/Run.client.lua"
