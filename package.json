@@ -1,6 +1,6 @@
 {
 	"name": "@rbxts/fusion",
-	"version": "0.1.0-ts.beta.9",
+	"version": "0.1.0-ts.beta.10",
 	"description": "TypeScript support for Fusion",
 	"main": "src/init.lua",
 	"typings": "src/index.d.ts",
@@ -14,9 +14,7 @@
 	"keywords": [
 		"roblox",
 		"typescript",
-		"fusion",
-		"jsx",
-		"tsx"
+		"fusion"
 	],
 	"contributors": [
 		{
