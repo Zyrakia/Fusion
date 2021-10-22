@@ -1,8 +1,17 @@
 import { ChildrenSymbol } from "../Instances/Children";
-import { State, StateOrValue } from "../Types";
+import { State } from "../Types";
 import { MergeStrings } from "../utilTypes";
 
-export type ChildrenValue = StateOrValue<Instance | undefined> | Array<ChildrenValue>;
+export type ChildrenValue =
+	| Instance
+	// State needs to be written out to prevent circular reference error
+	| {
+			get(asDependency: boolean): ChildrenValue;
+	  }
+	| Array<ChildrenValue>
+	| { [K in any]: ChildrenValue }
+	| undefined;
+
 export type NewProperties<T extends Instance> = Partial<
 	| {
 			[K in keyof WritableInstanceProperties<T>]:
