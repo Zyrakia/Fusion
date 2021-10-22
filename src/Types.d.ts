@@ -24,5 +24,5 @@ export type Error = {
 	trace: string;
 };
 
-export type State<T> = { get(asDependency: boolean): T };
+export type State<T> = { get(asDependency?: boolean): T };
 export type StateOrValue<T> = State<T> | T;
