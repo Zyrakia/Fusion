@@ -11,8 +11,13 @@ type KeepArrayMapOrRecord<I, R> = I extends Array<any>
 	: I extends Map<infer K, any>
 	? Map<K, R>
 	: Record<keyof I, R>;
-export declare function ComputedPairs<I, R>(
-	input: StateOrValue<I>,
-	processor: <K extends keyof I>(key: K, newValue: I[K]) => R,
-	destructor: (oldValue: R) => void,
-): ComputedPairs<KeepArrayMapOrRecord<I, R>>;
+
+type KeysOfArrayMapOrRecord<I> = I extends Array<any> ? number : I extends Map<infer K, any> ? K : keyof I;
+
+type PropertyOfArrayMapOrRecord<I> = I extends Array<infer T> ? T : I extends Map<any, infer V> ? V : I[keyof I];
+
+export declare function ComputedPairs<In, Out>(
+	input: StateOrValue<In>,
+	processor: (key: KeysOfArrayMapOrRecord<In>, newValue: PropertyOfArrayMapOrRecord<In>) => Out,
+	destructor?: (oldValue: Out) => void,
+): ComputedPairs<KeepArrayMapOrRecord<In, Out>>;
