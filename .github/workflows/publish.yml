@@ -15,16 +15,11 @@ jobs:
         runs-on: windows-latest
 
         steps:
-            - name: Checkout Fusion repository
-              uses: actions/checkout@v2.3.4
-              with:
-                repository: Elttob/Fusion
-
             - name: Checkout repository
               uses: actions/checkout@v2.3.4
               
             - name: Pull from Fusion repository
-              run: git remote -v
+              run: git pull Elttob/Fusion
 
             - name: Install Roblox Studio
               uses: OrbitalOwen/roblox-win-installer-action@1.1
