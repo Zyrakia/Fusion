@@ -31,7 +31,7 @@ export type Dependent = {
 };
 
 // An object which stores a piece of reactive state.
-export type StateObject<T> = Dependency & {
+export type StateObject<T> = {
 	type: "State";
 	kind: string;
 	get(asDependency?: boolean): T;
