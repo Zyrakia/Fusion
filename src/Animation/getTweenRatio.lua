@@ -1,3 +1,5 @@
+--!strict
+
 --[[
 	Given a `tweenInfo` and `currentTime`, returns a ratio which can be used to
 	tween between two values over time.
@@ -18,7 +20,7 @@ local function getTweenRatio(tweenInfo: TweenInfo, currentTime: number): number
 		cycleDuration += duration
 	end
 
-	if currentTime >= cycleDuration * numRepeats then
+	if currentTime >= cycleDuration * math.max(numRepeats, 1) then
 		return 1
 	end
 

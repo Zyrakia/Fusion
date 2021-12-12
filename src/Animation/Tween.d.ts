@@ -1,9 +1,13 @@
-import { Animatable, State } from "../Types";
+import { Animatable, StateObject } from "../PubTypes";
 
 export declare interface Tween<T> {
 	type: "State";
 	kind: "Tween";
+	/*
+		Returns the current value of this Tween object.
+		The object will be registered as a dependency unless `asDependency` is false.
+	*/
 	get(asDependency?: boolean): T;
 	// setTweenInfo(newTweenInfo: TweenInfo): void;
 }
-export declare function Tween<T extends Animatable>(goalState: State<T>, tweenInfo?: TweenInfo): Tween<T>;
+export declare function Tween<T>(goalState: StateObject<T>, tweenInfo?: TweenInfo): Tween<T>;

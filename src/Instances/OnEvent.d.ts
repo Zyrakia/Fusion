@@ -1,3 +1,8 @@
-import { MergeStrings } from "../utilTypes";
+import { MergeStrings } from "../Types";
 
-export declare function OnEvent<K extends string>(name: K): MergeStrings<"OnEventSymbol", K>;
+export type OnEventSymbol<K> = MergeStrings<"OnEventSymbol", K>;
+/*
+	Generates symbols used to denote event handlers when working with the `New`
+	function.
+*/
+export declare function OnEvent<K extends string>(name: K): OnEventSymbol<K>;

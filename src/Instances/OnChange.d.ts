@@ -1,3 +1,8 @@
-import { MergeStrings } from "../utilTypes";
+import { MergeStrings } from "../Types";
 
-export declare function OnChange<K extends string>(name: K): MergeStrings<"OnChangeSymbol", K>;
+export type OnChangeSymbol<K> = MergeStrings<"OnChangeSymbol", K>;
+/*
+	Generates symbols used to denote property change handlers when working with
+	the `New` function.
+*/
+export declare function OnChange<K extends string>(name: K): OnChangeSymbol<K>;

@@ -11,10 +11,10 @@ return function()
 			OnEvent = "function",
 			OnChange = "function",
 
-			State = "function",
+			Value = "function",
 			Computed = "function",
 			ComputedPairs = "function",
-			Compat = "function",
+			Observer = "function",
 
 			Tween = "function",
 			Spring = "function",

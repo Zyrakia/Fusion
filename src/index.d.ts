@@ -4,20 +4,19 @@ import { Children } from "./Instances/Children";
 import { ChildrenValue, New, NewProperties } from "./Instances/New";
 import { OnChange } from "./Instances/OnChange";
 import { OnEvent } from "./Instances/OnEvent";
-import { Compat } from "./State/Compat";
+import { Animatable, CanBeState } from "./PubTypes";
 import { Computed } from "./State/Computed";
 import { ComputedPairs } from "./State/ComputedPairs";
-import { State } from "./State/State";
-import { Animatable, Error, StateOrValue } from "./Types";
+import { Observer } from "./State/Observer";
+import { Value } from "./State/Value";
 
-// Fusion Lua
 declare namespace Fusion {
 	// State
-	export { Compat, Computed, ComputedPairs, State };
+	export { Computed, ComputedPairs, Observer, Value };
 	// Animation
 	export { Spring, Tween };
 	// Types
-	export { Animatable, Error, StateOrValue };
+	export { Animatable, CanBeState };
 	// Instances
 	export { Children, ChildrenValue, New, NewProperties, OnChange, OnEvent };
 }

@@ -1,15 +1,45 @@
-import { Animatable, State } from "../Types";
+import { CanBeState } from "..";
+import { StateObject } from "../PubTypes";
 
 export declare interface Spring<T> {
 	type: "State";
 	kind: "Spring";
+	/*
+		Returns the current value of this Spring object.
+		The object will be registered as a dependency unless `asDependency` is false.
+	*/
 	get(asDependency?: boolean): T;
 	/*
-	setDamping(damping: number): void;
-	setSpeed(damping: number): void;
-	setPosition(position: T): void;
-	setVelocity(velocity: T): void;
-	addVelocity(velocity: T): void;
+		Sets the position of the internal springs, meaning the value of this
+		Spring will jump to the given value. This doesn't affect velocity.
+
+		If the type doesn't match the current type of the spring, an error will be
+		thrown.
 	*/
+	setPosition(position: T): void;
+	/*
+		Sets the velocity of the internal springs, overwriting the existing velocity
+		of this Spring. This doesn't affect position.
+
+		If the type doesn't match the current type of the spring, an error will be
+		thrown.
+	*/
+	setVelocity(velocity: T): void;
+	/*
+		Adds to the velocity of the internal springs, on top of the existing
+		velocity of this Spring. This doesn't affect position.
+
+		If the type doesn't match the current type of the spring, an error will be
+		thrown.
+	*/
+	addVelocity(velocity: T): void;
 }
-export declare function Spring<T extends Animatable>(goalState: State<T>, speed?: number, damping?: number): Spring<T>;
+/*
+	Constructs a new computed state object, which follows the value of another
+	state object using a spring simulation.
+*/
+export declare function Spring<T>(
+	goalState: StateObject<T>,
+	speed?: CanBeState<number>,
+	damping?: CanBeState<number>,
+): Spring<T>;

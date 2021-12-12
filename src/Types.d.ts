@@ -1,28 +1,11 @@
-export type Animatable =
-	| number
-	| CFrame
-	| Color3
-	| ColorSequenceKeypoint
-	| DateTime
-	| NumberRange
-	| NumberSequenceKeypoint
-	| PhysicalProperties
-	| Ray
-	| Rect
-	| Region3
-	| Region3int16
-	| UDim
-	| UDim2
-	| Vector2
-	| Vector2int16
-	| Vector3
-	| Vector3int16;
+export type MergeStrings<S extends string, K> = K extends string | number | bigint | boolean | null | undefined
+	? `____Fusion${S}${K}`
+	: never;
 
-export type Error = {
-	raw: string;
-	message: string;
-	trace: string;
-};
-
-export type State<T> = { get(asDependency?: boolean): T };
-export type StateOrValue<T> = State<T> | T;
+export type KeysOfArrayMapOrRecord<I> = I extends Array<any> ? number : I extends Map<infer K, any> ? K : keyof I;
+export type PropertyOfArrayMapOrRecord<I> = I extends Array<infer T> ? T : I extends Map<any, infer V> ? V : I[keyof I];
+export type KeepArrayMapOrRecord<I, R> = I extends Array<any>
+	? Array<R>
+	: I extends Map<infer K, any>
+	? Map<K, R>
+	: Record<keyof I, R>;
