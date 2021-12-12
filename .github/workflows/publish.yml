@@ -14,8 +14,8 @@ jobs:
         runs-on: windows-latest
 
         steps:
-            - name: Checkout repository
-              uses: actions/checkout@v2.3.4
+            - name: Pull from Fusion repository
+              run: git pull upstream main
 
             - name: Install Roblox Studio
               uses: OrbitalOwen/roblox-win-installer-action@1.1
