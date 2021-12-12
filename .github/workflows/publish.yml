@@ -20,6 +20,8 @@ jobs:
               
             - name: Pull from Fusion repository
               run: |
+                git config user.name github-actions
+                git config user.email github-actions@github.com
                 git remote add upstream https://github.com/Elttob/Fusion.git
                 git pull upstream main --allow-unrelated-histories
 
