@@ -31,8 +31,17 @@ jobs:
             - name: Install NPM dependencies
               run: npm ci
 
+            - name: Build test place
+              run: rojo build test-runner.project.json -o test.rbxl
+
             - name: Run tests
-              run: npm test
+              shell: bash
+              run: run-in-roblox --place test.rbxl --script test-runner/Run.client.lua > test-out.txt
+              continue-on-error: true
+
+            - name: Check test status
+              shell: bash
+              run: cat test-out.txt | grep "0 failed, 0 skipped" || (cat test-out.txt | echo && exit 1)
 
             - name: Publish
               continue-on-error: true
