@@ -17,13 +17,15 @@ jobs:
         steps:
             - name: Checkout repository
               uses: actions/checkout@v2.3.4
+              with:
+                fetch-depth: 0
               
             - name: Pull from Fusion repository
               run: |
                 git config user.name github-actions
                 git config user.email github-actions@github.com
                 git remote add upstream https://github.com/Elttob/Fusion.git
-                git pull upstream main --allow-unrelated-histories
+                git pull upstream main
 
             - name: Install Roblox Studio
               uses: OrbitalOwen/roblox-win-installer-action@1.1
