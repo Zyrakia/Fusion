@@ -21,7 +21,7 @@ jobs:
             - name: Pull from Fusion repository
               run: |
                 git remote add upstream https://github.com/Elttob/Fusion.git
-                git pull upstream main
+                git pull upstream main --allow-unrelated-histories
 
             - name: Install Roblox Studio
               uses: OrbitalOwen/roblox-win-installer-action@1.1
