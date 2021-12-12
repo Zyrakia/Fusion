@@ -3,6 +3,7 @@
 name: Publish
 
 on:
+    push:
     workflow_dispatch:
     schedule:
         - cron: "0 7 * * *"
@@ -18,7 +19,7 @@ jobs:
               uses: actions/checkout@v2.3.4
               
             - name: Pull from Fusion repository
-              run: git pull upstream main
+              run: git remote list -v
 
             - name: Install Roblox Studio
               uses: OrbitalOwen/roblox-win-installer-action@1.1
