@@ -30,6 +30,7 @@ export type Dependent = {
 	dependencySet: Set<Dependency>;
 };
 
+// Internal note: Remember to also change this in New.d.ts
 // An object which stores a piece of reactive state.
 export type StateObject<T> = {
 	type: "State";

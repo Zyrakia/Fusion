@@ -5,12 +5,12 @@ import { OnEventSymbol } from "./OnEvent";
 
 export type ChildrenValue =
 	| Instance
-	// State needs to be written out to prevent circular reference error
-	| (Dependency & {
+	// StateObject needs to be written out to prevent circular reference error
+	| {
 			type: "State";
 			kind: string;
 			get(asDependency?: boolean): ChildrenValue;
-	  })
+	  }
 	| Array<ChildrenValue>
 	| { [K in any]: ChildrenValue }
 	| undefined;
