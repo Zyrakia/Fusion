@@ -1,4 +1,4 @@
-import { Animatable, StateObject } from "../PubTypes";
+import { Animatable, CanBeState, StateObject } from "../PubTypes";
 
 export declare interface Tween<T> {
 	type: "State";
@@ -10,4 +10,4 @@ export declare interface Tween<T> {
 	get(asDependency?: boolean): T;
 	// setTweenInfo(newTweenInfo: TweenInfo): void;
 }
-export declare function Tween<T>(goalState: StateObject<T>, tweenInfo?: TweenInfo): Tween<T>;
+export declare function Tween<T>(goalState: StateObject<T>, tweenInfo?: CanBeState<TweenInfo>): Tween<T>;

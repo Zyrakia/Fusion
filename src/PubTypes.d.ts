@@ -39,3 +39,10 @@ export type StateObject<T> = {
 };
 
 export type CanBeState<T> = StateObject<T> | T;
+
+/* Script-readable version information. */
+export type Version = {
+	major: number;
+	minor: number;
+	isRelease: boolean;
+};

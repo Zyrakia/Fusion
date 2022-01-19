@@ -1,6 +1,6 @@
 export declare interface Value<T> {
 	type: "State";
-	kind: "State";
+	kind: "Value";
 	/*
 		Returns the value currently stored in this State object.
 		The state object will be registered as a dependency unless `asDependency` is

@@ -18,7 +18,10 @@ export type Tween<T> = PubTypes.Tween<T>
 export type Spring<T> = PubTypes.Spring<T>
 
 type Fusion = {
+	version: PubTypes.Version,
+
 	New: (className: string) -> ((propertyTable: PubTypes.PropertyTable) -> Instance),
+	Ref: PubTypes.RefKey,
 	Children: PubTypes.ChildrenKey,
 	OnEvent: (eventName: string) -> PubTypes.OnEventKey,
 	OnChange: (propertyName: string) -> PubTypes.OnChangeKey,
@@ -33,7 +36,10 @@ type Fusion = {
 }
 
 return restrictRead("Fusion", {
+	version = {major = 0, minor = 2, isRelease = false},
+
 	New = require(script.Instances.New),
+	Ref = require(script.Instances.Ref),
 	Children = require(script.Instances.Children),
 	OnEvent = require(script.Instances.OnEvent),
 	OnChange = require(script.Instances.OnChange),

@@ -4,7 +4,7 @@ import { Children } from "./Instances/Children";
 import { ChildrenValue, New, NewProperties } from "./Instances/New";
 import { OnChange } from "./Instances/OnChange";
 import { OnEvent } from "./Instances/OnEvent";
-import { Animatable, CanBeState, StateObject } from "./PubTypes";
+import { Animatable, CanBeState, StateObject, Version } from "./PubTypes";
 import { Computed } from "./State/Computed";
 import { ComputedPairs } from "./State/ComputedPairs";
 import { Observer } from "./State/Observer";
@@ -16,9 +16,11 @@ declare namespace Fusion {
 	// Animation
 	export { Spring, Tween };
 	// Types
-	export { Animatable, CanBeState, StateObject };
+	export { Animatable, CanBeState, StateObject, Version };
 	// Instances
 	export { Children, ChildrenValue, New, NewProperties, OnChange, OnEvent };
+	// Misc
+	export const version: Version;
 }
 
 export = Fusion;
