@@ -10,6 +10,7 @@ return function()
 
 			New = "function",
 			Ref = "table",
+            Cleanup = "table",
 			Children = "table",
 			OnEvent = "function",
 			OnChange = "function",
@@ -20,7 +21,7 @@ return function()
 			Observer = "function",
 
 			Tween = "function",
-			Spring = "function",
+			Spring = "function"
 		}
 
 		for apiName, apiType in pairs(api) do

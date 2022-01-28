@@ -38,7 +38,17 @@ export type StateObject<T> = {
 	get(asDependency?: boolean): T;
 };
 
+// A value which can be either a constant or a state object.
 export type CanBeState<T> = StateObject<T> | T;
+
+// A task which can be accepted for cleanup.
+export type Task =
+	| Instance
+	| RBXScriptConnection
+	| Callback
+	| { destroy: Callback }
+	| { Destroy: Callback }
+	| Array<Task>;
 
 /* Script-readable version information. */
 export type Version = {

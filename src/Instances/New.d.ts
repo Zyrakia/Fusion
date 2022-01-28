@@ -1,7 +1,10 @@
+import { Value } from "..";
 import { ChildrenSymbol } from "../Instances/Children";
-import { Dependency, StateObject } from "../PubTypes";
+import { StateObject, Task } from "../PubTypes";
+import { CleanupSymbol } from "./Cleanup";
 import { OnChangeSymbol } from "./OnChange";
 import { OnEventSymbol } from "./OnEvent";
+import { RefSymbol } from "./Ref";
 
 export type ChildrenValue =
 	| Instance
@@ -30,11 +33,14 @@ export type NewProperties<T extends Instance> = Partial<
 				: never;
 	  }
 	| Record<ChildrenSymbol, ChildrenValue>
+	| Record<RefSymbol, Value<T | undefined>>
+	| Record<CleanupSymbol, Task>
 >;
-/*
-	Constructs and returns a new instance, with options for setting properties,
-	event handlers and other attributes on the instance right away.
-*/
+
+/**
+ * Constructs and returns a new instance, with options for setting properties,
+ * event handlers and other attributes on the instance right away.
+ */
 export declare function New<T extends keyof CreatableInstances>(
 	elementName: T,
 ): (properties: NewProperties<Instances[T]>) => Instances[T];
