@@ -4,6 +4,7 @@ import { StateObject, Task } from "../PubTypes";
 import { CleanupSymbol } from "./Cleanup";
 import { OnChangeSymbol } from "./OnChange";
 import { OnEventSymbol } from "./OnEvent";
+import { OutSymbol } from "./Out";
 import { RefSymbol } from "./Ref";
 
 export type ChildrenValue =
@@ -31,6 +32,9 @@ export type NewProperties<T extends Instance> = Partial<
 			[K in InstanceEventNames<T> as OnEventSymbol<K>]: T[K] extends RBXScriptSignal<infer C>
 				? (...args: Parameters<C>) => void
 				: never;
+	  }
+	| {
+			[K in InstancePropertyNames<T> as OutSymbol<K>]: Value<T[K]>;
 	  }
 	| Record<ChildrenSymbol, ChildrenValue>
 	| Record<RefSymbol, Value<T | undefined>>

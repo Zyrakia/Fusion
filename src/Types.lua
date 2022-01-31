@@ -104,10 +104,8 @@ export type Observer = PubTypes.Observer & {
 -- An object which delays a state object's updates.
 export type Delay<T> = PubTypes.Delay<T> & {
 	_valueState: PubTypes.StateObject<T>,
-	_nextValue: T,
 	_currentValue: T,
 	_duration: number,
-	_durationIsState: boolean,
 }
 
 return nil

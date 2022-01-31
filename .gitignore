@@ -12,3 +12,6 @@
 
 # Ignore npm dependencies
 node_modules/
+
+# Ingore npm bundles
+*.tgz
