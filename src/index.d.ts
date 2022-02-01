@@ -11,11 +11,12 @@ import { Computed } from "./State/Computed";
 import { ComputedPairs } from "./State/ComputedPairs";
 import { Delay } from "./State/Delay";
 import { Observer } from "./State/Observer";
+import { unwrap } from "./State/unwrap";
 import { Value } from "./State/Value";
 
 declare namespace Fusion {
 	// State
-	export { Computed, ComputedPairs, Delay, Observer, Value };
+	export { Computed, ComputedPairs, Delay, Observer, unwrap, Value };
 	// Animation
 	export { Spring, Tween };
 	// Types

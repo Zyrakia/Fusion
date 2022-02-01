@@ -17,6 +17,7 @@ export type Observer = PubTypes.Observer
 export type Delay<T> = PubTypes.Delay<T>
 export type Tween<T> = PubTypes.Tween<T>
 export type Spring<T> = PubTypes.Spring<T>
+export type unwrap<T> = PubTypes.unwrap<T>
 
 type Fusion = {
 	version: PubTypes.Version,
@@ -34,8 +35,10 @@ type Fusion = {
 	Observer: (watchedState: StateObject<any>) -> Observer,
     Delay: <T>(valueState: StateObject<T>, delayDuration: number) -> Delay<T>,
 
-	Tween: <T>(goalState: StateObject<T>, tweenInfo: TweenInfo?) -> Tween<T>,
-	Spring: <T>(goalState: StateObject<T>, speed: number?, damping: number?) -> Spring<T>
+	Tween: <T>(goalState: StateObject<T>, tweenInfo: TweenInfo?) -> Tween,
+	Spring: <T>(goalState: StateObject<T>, speed: number?, damping: number?) -> Spring<T>,
+
+    unwrap: <T>(item: CanBeState<T>, useDependency: boolean?) -> T
 }
 
 return restrictRead("Fusion", {
@@ -55,5 +58,7 @@ return restrictRead("Fusion", {
     Delay = require(script.State.Delay),
 
 	Tween = require(script.Animation.Tween),
-	Spring = require(script.Animation.Spring)
+	Spring = require(script.Animation.Spring),
+
+    unwrap = require(script.State.unwrap)
 }) :: Fusion
