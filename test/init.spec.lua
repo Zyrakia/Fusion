@@ -23,6 +23,8 @@ return function()
 
 			Tween = "function",
 			Spring = "function",
+
+			unwrap = "function",
 		}
 
 		for apiName, apiType in pairs(api) do
