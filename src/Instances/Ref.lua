@@ -1,7 +1,8 @@
 --!strict
 
 --[[
-	A special key for property tables, which
+	A special key for property tables, which stores a reference to the instance
+	in a user-provided Value object.
 ]]
 
 local Package = script.Parent.Parent
@@ -14,7 +15,7 @@ Ref.type = "SpecialKey"
 Ref.kind = "Ref"
 Ref.stage = "observer"
 
-function Ref:apply(refState: any, applyToRef: PubTypes.SemiWeakRef, cleanupTasks: {PubTypes.Task})
+function Ref:apply(refState: any, applyToRef: PubTypes.SemiWeakRef, cleanupTasks: { PubTypes.Task })
 	if xtypeof(refState) ~= "State" or refState.kind ~= "Value" then
 		logError("invalidRefType")
 	else
