@@ -1,6 +1,6 @@
 {
     "name": "@rbxts/fusion",
-    "version": "0.2.1-ts.custom",
+    "version": "0.2.2-ts.custom",
     "description": "TypeScript support for Fusion",
     "main": "src/init.lua",
     "typings": "src/index.d.ts",
